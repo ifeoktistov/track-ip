@@ -1,7 +1,7 @@
 track-ip
 ==============
 
-For track my raspbarry DHCP IP
+For track my raspberry DHCP IP
 
 ## INSTALL
 
