@@ -7,7 +7,7 @@ For track my raspberry DHCP IP
 
 - Create DB tables. See track-server\dump.sql
 
-- Confis PHP. See track-server\config.php:
+- Config PHP. See track-server\config.php:
 ```php
 <?php
   return array(
