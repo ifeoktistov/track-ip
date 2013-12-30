@@ -3,13 +3,14 @@ track-ip
 
 For track my raspbarry DHCP IP
 
-*************INSTALL*************
+## INSTALL
 
-1. CONFIG WEB SERVER. Create DB tables. see track-server\dump.sql
+- Create DB tables. See track-server\dump.sql
 
-2. CONFIG WEB SERVER. track-server\config.php:
+- Confis PHP. See track-server\config.php:
+```php
 <?php
-return array(
+  return array(
     'db' => array(
         'host' => '',
         'user' => '',
@@ -22,9 +23,11 @@ return array(
         ),
     ),
 );
+```
 
 
-3. CONFIG CLIENT node.js\config.js:
+- CONFIG CLIENT node.js\config.js:
+```js
 module.exports = {
     deviceName : 'testTrack',
     password : 'qwerty123456',
@@ -34,15 +37,20 @@ module.exports = {
         path: '/'
     }
 }
+```
 
-4. ADD NEW CRON JOB
+- ADD NEW CRON JOB
+```
 * * * * * /opt/node/bin/node /etc/track-ip/node.js/track.js
+```
 
+## Yuhhu... Result in browser:
 
-result in browser:
 Your IP: 194.**.**.**
-id	ip	deviceName	timestamp	addresses
-2	194.**.**.**	testTrack	2013-12-30 23:57:01	["10.10.100.102"]
-3	194.**.**.**	testTrack	2013-12-30 23:58:02	["10.10.100.102"]
-4	194.**.**.**	testTrack	2013-12-30 23:59:01	["10.10.100.102"]
-5	194.**.**.**	testTrack	2013-12-31 00:00:01	["10.10.100.102"]
+
+| ip           | deviceName  | timestamp          | addresses |
+| ------------ | -----       | -----------------  | -----    |
+| 194.**.**.** | testTrack   | 2013-12-30 23:57:01 | ["10.10.100.102"] |
+| 194.**.**.** | testTrack   | 2013-12-30 23:58:02 |["10.10.100.102"] |
+| 194.**.**.** | testTrack   | 2013-12-30 23:59:01 |["10.10.100.102"] |
+| 194.**.**.** | testTrack   | 2013-12-31 00:00:01 |["10.10.100.102"] |
