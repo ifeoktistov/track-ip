@@ -4,6 +4,6 @@ module.exports = {
     trackServer : {
         host: 'mysite.com',
         port: 80,
-        path: '/track.php'
+        path: '/'
     }
 }
