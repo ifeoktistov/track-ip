@@ -29,7 +29,21 @@ class Track {
     public function trackNewDevice($params){
 
         if ($this->validateDevice($params)) {
-            $this->db->insertRow("INSERT INTO `feoktist_track`.`track` (`deviceName`,`ip`,`addresses`) VALUES (?, ?, ?);",
+            $this->db->deleteRow(
+                "DELETE FROM `track` WHERE
+                timestamp > (NOW() - INTERVAL ? MINUTE AND
+                deviceName = ? AND
+                ip = ? AND
+                addresses = ?
+                )",
+                array(
+                    10,
+                    $params['deviceName'],
+                    self::getClientIP(),
+                    $params['addresses'],
+                )
+            );
+            $this->db->insertRow("INSERT INTO `track` (`deviceName`, `ip`, `addresses`) VALUES (?, ?, ?);",
             array(
                 $params['deviceName'],
                 self::getClientIP(),

@@ -18,7 +18,7 @@ if (isset($_POST['deviceName'])) {
     }
 }
 
-$history = $track->db->getRows('SELECT  * FROM `feoktist_track`.`track`');
+$history = $track->db->getRows('SELECT  * FROM `feoktist_track`.`track` ORDER BY id DESC');
 
 $cols = array_keys($history[0]);
 $track->table->addRow();
